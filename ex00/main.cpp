@@ -2,59 +2,76 @@
 
 #include "easyfind.hpp"
 
-int main(void) {
-  // vectorの場合
+void searchAndPrint(std::vector<int> &vec, int target) {
+  std::cout << "Search " << target << " in vector: " << std::endl;
+  try {
+    std::vector<int>::const_iterator itr = Easyfind(vec, target);
+    std::cout << "-> Found: " << *itr << std::endl;
+  } catch (std::exception &e) {
+    std::cout << "-> " << e.what() << std::endl;
+  }
+}
+
+void searchAndPrint(std::list<int> &list, int target) {
+  std::cout << "Search " << target << " in List: " << std::endl;
+  try {
+    std::list<int>::const_iterator itr = Easyfind(list, target);
+    std::cout << "-> Found: " << *itr << std::endl;
+  } catch (std::exception &e) {
+    std::cout << "-> " << e.what() << std::endl;
+  }
+}
+
+void searchAndPrint(std::deque<int> &deq, int target) {
+  std::cout << "Search " << target << " in Deque: " << std::endl;
+  try {
+    std::deque<int>::const_iterator itr = Easyfind(deq, target);
+    std::cout << "-> Found: " << *itr << std::endl;
+  } catch (std::exception &e) {
+    std::cout << "-> " << e.what() << std::endl;
+  }
+}
+
+void vectorTest(void) {
+  std::cout << "--- vector test ---" << std::endl;
   std::vector<int> vec;
+  searchAndPrint(vec, 3);
   for (int i = 0; i < 5; i++) {
     vec.push_back(i);
   }
-  try {
-    std::vector<int>::iterator itr = easyfind(vec, 3);
-    std::cout << *itr << std::endl;  // イテレータを解除して値を表示
-  } catch (std::exception &e) {
-    std::cout << e.what() << std::endl;
-  }
-  try {
-    std::vector<int>::iterator itr = easyfind(vec, 7);
-    std::cout << *itr << std::endl;  // イテレータを解除して値を表示
-  } catch (std::exception &e) {
-    std::cout << e.what() << std::endl;
-  }
+  searchAndPrint(vec, 3);
+  searchAndPrint(vec, 7);
 
-  // listの場合
+  std::cout << std::endl;
+}
+
+void listTest(void) {
+  std::cout << "--- list test ---" << std::endl;
   std::list<int> list;
+  searchAndPrint(list, 3);
   for (int i = 0; i < 5; i++) {
-    list.push_back(i);  // リストに要素を追加
+    list.push_back(i);
   }
-  try {
-    std::list<int>::iterator itr = easyfind(list, 3);
-    std::cout << *itr << std::endl;  // イテレータを解除して値を表示
-  } catch (const std::exception &e) {
-    std::cout << e.what() << std::endl;
-  }
-  try {
-    std::list<int>::iterator itr = easyfind(list, 6);
-    std::cout << *itr << std::endl;  // イテレータを解除して値を表示
-  } catch (const std::exception &e) {
-    std::cout << e.what() << std::endl;
-  }
+  searchAndPrint(list, 3);
+  searchAndPrint(list, 7);
+  std::cout << std::endl;
+}
 
-  // dequeの場合
+void dequeTest(void) {
+  std::cout << "--- deque test ---" << std::endl;
   std::deque<int> deq;
+  searchAndPrint(deq, 3);
   for (int i = 0; i < 5; i++) {
     deq.push_back(i);
   }
-  try {
-    std::deque<int>::iterator itr = easyfind(deq, 3);
-    std::cout << *itr << std::endl;
-  } catch (const std::exception &e) {
-    std::cout << e.what() << std::endl;
-  }
-  try {
-    std::deque<int>::iterator itr = easyfind(deq, 10);
-    std::cout << *itr << std::endl;
-  } catch (const std::exception &e) {
-    std::cout << e.what() << std::endl;
-  }
+  searchAndPrint(deq, 3);
+  searchAndPrint(deq, 7);
+  std::cout << std::endl;
+}
+
+int main(void) {
+  vectorTest();
+  listTest();
+  dequeTest();
   return 0;
 }

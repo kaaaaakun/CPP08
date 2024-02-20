@@ -8,7 +8,7 @@
 #include <vector>
 
 template <typename T>
-typename T::iterator easyfind(T &container, int value) {
+typename T::iterator Easyfind(T &container, int value) {
   typename T::iterator itr =
       std::find(container.begin(), container.end(), value);
   if (itr != container.end()) return itr;
