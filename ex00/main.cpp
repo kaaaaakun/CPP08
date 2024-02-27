@@ -5,8 +5,8 @@
 void searchAndPrint(std::vector<int> &vec, int target) {
   std::cout << "Search " << target << " in vector: " << std::endl;
   try {
-    std::vector<int>::const_iterator itr = Easyfind(vec, target);
-    std::cout << "-> Found: " << *itr << std::endl;
+    std::vector<int> itr = Easyfind(vec, target);
+    std::cout << "-> Found: " << itr << std::endl;
   } catch (std::exception &e) {
     std::cout << "-> " << e.what() << std::endl;
   }
@@ -15,8 +15,8 @@ void searchAndPrint(std::vector<int> &vec, int target) {
 void searchAndPrint(std::list<int> &list, int target) {
   std::cout << "Search " << target << " in List: " << std::endl;
   try {
-    std::list<int>::const_iterator itr = Easyfind(list, target);
-    std::cout << "-> Found: " << *itr << std::endl;
+    std::list<int> itr = Easyfind(list, target);
+    std::cout << "-> Found: " << itr << std::endl;
   } catch (std::exception &e) {
     std::cout << "-> " << e.what() << std::endl;
   }
@@ -25,8 +25,8 @@ void searchAndPrint(std::list<int> &list, int target) {
 void searchAndPrint(std::deque<int> &deq, int target) {
   std::cout << "Search " << target << " in Deque: " << std::endl;
   try {
-    std::deque<int>::const_iterator itr = Easyfind(deq, target);
-    std::cout << "-> Found: " << *itr << std::endl;
+    std::deque<int> itr = Easyfind(deq, target);
+    std::cout << "-> Found: " << itr << std::endl;
   } catch (std::exception &e) {
     std::cout << "-> " << e.what() << std::endl;
   }
@@ -40,7 +40,8 @@ void vectorTest(void) {
     vec.push_back(i);
   }
   searchAndPrint(vec, 3);
-  searchAndPrint(vec, 7);
+  searchAndPrint(vec, 4);
+  searchAndPrint(vec, 5);
 
   std::cout << std::endl;
 }
