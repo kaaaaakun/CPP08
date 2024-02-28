@@ -9,10 +9,7 @@
 
 template <typename T>
 typename T::iterator Easyfind(T &container, int value) {
-  typename T::iterator itr =
-      std::find(container.begin(), container.end(), value);
-  if (itr != container.end()) return itr;
-  throw std::invalid_argument("Value not found");
+  return (std::find(container.begin(), container.end(), value));
 }
 
 #endif  // EASYFIND_HPP
